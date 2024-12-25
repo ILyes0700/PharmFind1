@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmFind</title>
+    <link rel="stylesheet" href="medfind.css">
+    <link rel="website icon" href="i1.png" type="png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" >
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+    .img2 {
+      cursor: pointer;
+      width: 150px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+    img:hover {
+      transform: scale(1.1);
+    }
+    .chatbot {
+      display: none; /* Caché par défaut */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .chatbot-header {
+      background: #5DADE2;
+      color: white;
+      padding: 10px;
+      font-size: 18px;
+      text-align: center;
+      position: relative;
+    }
+    .kanit-regular {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+    .chatbot-header button {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      background: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .chatbot-messages {
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    .chatbot-input input {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+    .chatbot-input button {
+      padding: 10px;
+      background: #5DADE2;
+      color: white;
+      border-top-left-radius: 13%;
+      border-bottom-left-radius:13% ;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .fle{
+        width: 50px;
+        height: 50px;
+    }
+    .bot{
+        height: 280px;
+        width: 260px;
+    }
+    .back-button i {
+            margin-right: 8px;
+    }
+    .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5DADE2;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+     }
+        .bot.img2 {
+            animation: fadeIn 1s ease-out;  /* Durée de l'animation */
+            animation-delay: 0.5s;  /* Retard avant de commencer l'animation */
+            animation-fill-mode: forwards;  /* Maintenir l'état final de l'animation */
+            animation: bounce 2s infinite;
+
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(12px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);  /* Échelle réduite au début */
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);  /* Taille normale à la fin */
+            }
+        }
+  </style>
+</head>
+<body style="background-color: #ffffff;" class="kanit-regular" >
+  <nav class="navbar navbar-expand-lg" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="log11.php">
+        <img src="i1.png" alt="Logo PharmFind" class="me-2" style="width: 40px; height: 40px;">
+        <h3 class="mb-0" style=" color:#002060;">PharmFind</h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="painer.php" style="color: #002060; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+              <h5 class="mb-0" style="font-size: 18px;">Votre Panier</h5>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<a href="log11.php" class="back-button mt-5 mb-5">
+  <i class="fa fa-arrow-left"></i> Retour à la page précédente
+</a>
+  <h1 style="color: #002060;">PharmFind Intelligent</h1>
+  <p style="color: #000000;">Cliquez sur l'image pour ouvrir le chatbot :</p>
+  <img src="botbot2.png" alt="Ouvrir Chatbot" id="openChatbot" class="bot img2">
+
+  <div class="chatbot" id="chatbot">
+    <div class="chatbot-header">
+        PharmFind Intelligent
+      <button id="closeChatbot">X</button>
+    </div>
+    <div class="chatbot-messages" id="messages">
+      <p style="color: #424141;">Bonjour ! Décrivez vos symptômes pour obtenir de l'aide.</p>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="userInput" placeholder="Écrivez vos symptômes ici...">
+      <button id="sendMessage">Envoyer</button>
+    </div>
+  </div>
+  <div class="text-center mt-5 mb-0">
+    <p class="footer-text mt-5" style="color: #b0b0b0; font-size: 14px; padding-top: 90px;">PharmFind &copy; 2024 | Designed by <strong>Ilyes</strong></p>
+</div>
+<script> 
+  // Base de données médicale
+  const database = [
+    {
+      maladie: "Anémie",
+      symptomes: ["fatigue", "vertiges", "faiblesse", "essoufflement"],
+      medicaments: ["Suppléments de fer", "Acide folique", "Vitamine B12"],
+      causes: ["Carence en fer", "Perte de sang", "Troubles de la moelle osseuse"],
+      traitements_non_medicaux: ["Alimentation riche en fer", "Éviter les aliments inhibiteurs de l'absorption du fer (comme le thé)"],
+      precautions: ["Consulter un médecin pour déterminer la cause sous-jacente", "Ne pas prendre de suppléments de fer sans avis médical"]
+    },
+    {
+      maladie: "Hypotension",
+      symptomes: ["vertiges", "maux de tête", "fatigue", "vision floue"],
+      medicaments: ["Hydratation", "Aliments salés", "Fludrocortisone"],
+      causes: ["Déshydratation", "Problèmes cardiaques", "Perte de sang"],
+      traitements_non_medicaux: ["Boire beaucoup d'eau", "Éviter les changements brusques de position"],
+      precautions: ["Éviter les efforts physiques excessifs", "Consulter un médecin si les symptômes persistent"]
+    },
+    {
+      maladie: "Migraine",
+      symptomes: ["maux de tête sévères", "vertiges", "nausées", "sensibilité à la lumière"],
+      medicaments: ["Ibuprofène", "Sumatriptan", "Paracétamol"],
+      causes: ["Facteurs génétiques", "Stress", "Changements hormonaux", "Aliments spécifiques"],
+      traitements_non_medicaux: ["Repos dans une pièce sombre et calme", "Éviter les déclencheurs connus (comme le chocolat, l'alcool)"],
+      precautions: ["Consulter un médecin pour des migraines fréquentes", "Éviter l'auto-médication prolongée"]
+    },
+    {
+      maladie: "Grippe",
+      symptomes: ["fièvre", "maux de tête", "courbatures", "fatigue"],
+      medicaments: ["Paracétamol", "Ibuprofène", "Doliprane"],
+      causes: ["Virus de la grippe"],
+      traitements_non_medicaux: ["Repos", "Hydratation", "Alimentation équilibrée"],
+      precautions: ["Éviter les lieux publics pour prévenir la contagion", "Se laver fréquemment les mains"]
+    },
+    {
+      maladie: "COVID-19",
+      symptomes: ["fièvre", "toux", "perte de goût", "fatigue"],
+      medicaments: ["Paracétamol", "Repos", "Consultation médicale"],
+      causes: ["Virus SARS-CoV-2"],
+      traitements_non_medicaux: ["Isolement", "Repos", "Hydratation"],
+      precautions: ["Port du masque", "Maintien de la distanciation sociale", "Vaccination"]
+    },
+    {
+      maladie: "Asthme",
+      symptomes: ["essoufflement", "sifflements", "oppression thoracique"],
+      medicaments: ["Salbutamol", "Corticostéroïdes inhalés"],
+      causes: ["Réaction allergique", "Infections respiratoires", "Pollution de l'air"],
+      traitements_non_medicaux: ["Éviter les allergènes", "Maintenir l'air intérieur propre"],
+      precautions: ["Porter un inhalateur", "Consulter un médecin pour un traitement personnalisé"]
+    },
+    {
+      maladie: "Infection urinaire",
+      symptomes: ["brûlures en urinant", "envie fréquente d'uriner", "douleur abdominale"],
+      medicaments: ["Nitrofurantoïne", "Fosfomycine"],
+      causes: ["Bactéries, généralement Escherichia coli", "Relations sexuelles", "Utilisation prolongée de cathéters urinaires"],
+      traitements_non_medicaux: ["Boire beaucoup d'eau", "Uriner fréquemment"],
+      precautions: ["Consulter un médecin si les symptômes persistent", "Ne pas ignorer les infections urinaires récurrentes"]
+    },
+    {
+      maladie: "Diabète de type 2",
+      symptomes: ["soif excessive", "fatigue", "mictions fréquentes", "perte de poids non expliquée"],
+      medicaments: ["Metformine", "Insuline", "Sulfonylurées"],
+      causes: ["Résistance à l'insuline", "Obésité", "Antécédents familiaux"],
+      traitements_non_medicaux: ["Alimentation saine", "Exercice physique", "Perdre du poids"],
+      precautions: ["Surveiller la glycémie régulièrement", "Consulter un médecin pour ajuster le traitement"]
+    },
+    {
+      maladie: "Arthrite",
+      symptomes: ["douleur articulaire", "raideur", "gonflement des articulations", "difficulté à bouger les articulations"],
+      medicaments: ["AINS", "Corticostéroïdes", "Méthotrexate"],
+      causes: ["Inflammation des articulations", "Facteurs génétiques", "Vieillissement"],
+      traitements_non_medicaux: ["Exercices de renforcement", "Chaud ou froid local", "Repos des articulations"],
+      precautions: ["Éviter les mouvements excessifs des articulations", "Consulter un rhumatologue pour un suivi"]
+    },
+    // Ajoutez ici d'autres maladies...
+  ];
+
+  // Sélectionner les éléments
+  const openChatbot = document.getElementById('openChatbot');
+  const closeChatbot = document.getElementById('closeChatbot');
+  const chatbot = document.getElementById('chatbot');
+  const userInput = document.getElementById('userInput');
+  const sendMessage = document.getElementById('sendMessage');
+  const messages = document.getElementById('messages');
+
+  // Ouvrir le chatbot
+  openChatbot.addEventListener('click', () => {
+    chatbot.style.display = 'block';
+  });
+
+  // Fermer le chatbot
+  closeChatbot.addEventListener('click', () => {
+    chatbot.style.display = 'none';
+  });
+
+  // Analyser les symptômes
+  function analyserEtat(saisie) {
+    const symptomesUtilisateur = saisie.toLowerCase().split(" ");
+    let resultat = "Aucune maladie correspondante trouvée. Consultez un médecin.";
+
+    database.forEach(entry => {
+      const symptomesCorrespondants = entry.symptomes.filter(symptome =>
+        symptomesUtilisateur.some(userSymptome => userSymptome.includes(symptome))
+      );
+
+      if (symptomesCorrespondants.length > 0) {
+        resultat = `Il semble que vous pourriez avoir ${entry.maladie}. 
+                    \n\nSymptômes correspondants : ${symptomesCorrespondants.join(", ")}.
+                    \n\nMédicaments recommandés : ${entry.medicaments.join(", ")}.
+                    \n\nCauses possibles : ${entry.causes.join(", ")}.
+                    \n\nTraitements non médicaux : ${entry.traitements_non_medicaux.join(", ")}.
+                    \n\nPrécautions : ${entry.precautions.join(", ")}.`;
+      }
+    });
+
+    return resultat;
+  }
+
+  // Envoyer un message
+  sendMessage.addEventListener('click', () => {
+    const userMessage = userInput.value.trim();
+    if (userMessage) {
+      // Ajouter le message utilisateur
+      const userMsgElem = document.createElement('p');
+      userMsgElem.textContent = `Vous: ${userMessage}`;
+      messages.appendChild(userMsgElem);
+
+      // Ajouter une réponse du chatbot
+      const botMsgElem = document.createElement('p');
+      botMsgElem.textContent = analyserEtat(userMessage);
+      messages.appendChild(botMsgElem);
+
+      // Réinitialiser le champ de saisie
+      userInput.value = '';
+      messages.scrollTop = messages.scrollHeight; // Scroller vers le bas
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" href="i1.png" type="png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>Pharmfind</title>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-left {
+    flex: 1;
+    background-color: #ffffff;
+    
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.login-image {
+    width: 80%;
+    height: auto;
+}
+
+.login-right {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.input-group label span {
+    color: #ff4d4d;
+}
+.kanit-regular {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    color: #3751ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    background-color: #ffbe5e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #ffb547;
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: #888;
+    position: relative;
+}
+
+.divider:before, 
+.divider:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: #ddd;
+    position: absolute;
+    top: 50%;
+    width: 40%;
+}
+
+.divider:before {
+    left: 0;
+}
+
+.divider:after {
+    right: 0;
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.signup-link a {
+    color: #3751ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+.login-image {
+    width: 80%;
+    height: auto;
+    animation: slide 3s infinite ease-in-out;
+}
+
+/* Animation "slide" (mouvement horizontal) */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(60px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+    </style>
+</head>
+<body style="background-color: #ffffff;" class="kanit-regular">
+  
+    <div class="login-container">
+        <div class="login-left">
+            <img src="picc2.png" alt="Illustration" class="login-image">
+        </div>
+        <form class="container mt-5 mb-5" name="f" onsubmit="return verif4()" action="loginliv.php" method="post">
+        <div class="login-right">
+            <h1 style="color: #002060;">Bienvenue sur PharmFind</h1>
+            <h2 style="color: #ffbe5e;">Se connecter</h2>
+            <form class="login-form">
+                <div class="input-group">
+                    <label for="username">ID <span>*</span></label>
+                    <input type="tel" class="form-control mt-2 kanit-regular" id="inputEmail3" name="id" placeholder="Votre ID Qui Envoyer On Email">
+                </div>
+                <button type="submit" class="login-btn kanit-regular">Login</button>
+            </form>
+            <div class="divider">OU</div>
+            <p class="signup-link">
+                Besoin d'un compte ? <a href="signliv.html" style=" color: #ffbe5e;">Inscrivez-vous</a>
+            </p>
+        </div>
+      </form>
+    </div>
+    
+</body>
+</html>

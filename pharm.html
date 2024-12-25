@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmFind</title>
+    <link rel="stylesheet" href="medfind.css">
+    <link rel="icon" href="i1.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+</head>
+<style>
+   .kanit-regular {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+<body class="kanit-regular">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="pharm.html">
+            <img src="i1.png" alt="Logo PharmFind" class="me-2" style="width: 40px; height: 40px;">
+            <h3 class="mb-0" style="color:#002060;">PharmFind</h3>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="monphar.html" style="color: #75b1da; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+                  <h5 class="mb-0" style="font-size: 18px;">Le Coffre-Fort</h5>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Main Section with Form -->
+    <section class="container py-5">
+        <form action="med.php" method="post" name="f" onsubmit="return med1()" enctype="multipart/form-data">
+            <div class="row gy-3">
+                <div class="col-12 col-md-6">
+                    <label for="id" class="form-label">Identifiant</label>
+                    <input type="text" class="form-control" name="id" id="id" placeholder="Votre ID envoyé par email" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="nom" class="form-label">Nom Médicament</label>
+                    <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom du médicament" required>
+                </div>
+                <div class="col-12">
+                    <label for="imagee" class="form-label">Image Médicament</label>
+                    <input type="file" name="imagee" id="imagee" class="form-control" accept=".jpg, .jpeg, .png, .gif, .webp" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="prix" class="form-label">Prix Médicament</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="prix" id="prix" placeholder="Prix en Dinar" required>
+                        <span class="input-group-text">d</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="disc" class="form-label">Description Médicament</label>
+                    <textarea class="form-control" name="disc" id="disc" rows="3" placeholder="Obligatoire" required></textarea>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary me-3">Ajouter</button>
+                    <button type="reset" class="btn btn-danger">Annuler</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <div class="text-center mt-4">
+        <p class="footer-text" style="color: #b0b0b0; font-size: 14px; padding-top: 75px;">PharmFind &copy; 2024 | Designed by <strong>Ilyes</strong></p>
+    </div>
+</body>
+</html>

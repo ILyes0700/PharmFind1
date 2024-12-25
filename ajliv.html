@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Livreur</title>
+    <link rel="stylesheet" href="medfind.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .kanit-regular {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .navbar {
+            background-color: #d3f5d3;
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-brand h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        footer {
+            background-color: #d3f5d3;
+            padding: 30px 20px;
+        }
+
+        footer .ic {
+            width: 30px;
+            height: 30px;
+        }
+
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        footer .col-md-4 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        footer .text-center p {
+            margin: 0;
+            color: #333;
+            font-size: 14px;
+        }
+
+        /* Flèche de retour */
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            input[type="submit"] {
+                padding: 14px 20px;
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            footer .col-md-4 {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand h3 {
+                font-size: 1.2rem;
+            }
+
+            .navbar-toggler {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body class="kanit-regular">
+   
+    <div class="container">
+        <!-- Flèche retour vers ajliv.html -->
+        <a href="livr.php" class="back-button">
+            <i class="fa fa-arrow-left"></i> Retour à la page précédente
+        </a>
+
+        <h2>Ajouter un Livreur</h2>
+
+        <form action="ajouter_livreur.php" method="POST">
+            <label for="id">ID qui envoyer en email </label>
+            <input type="text" id="id" name="id" >
+
+            <label for="tel">Numéro de téléphone</label>
+            <input type="tel" id="tel" name="tel" required placeholder="Exemple : 12345678">
+
+            <label for="email">Adresse Email</label>
+            <input type="email" id="email" name="email" required placeholder="Exemple : livreur@gmail.com">
+
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required placeholder="Exemple : Dupont">
+
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required placeholder="Exemple : Jean">
+
+            <input type="submit" class="kanit-regular" value="Ajouter le Livreur">
+        </form>
+    </div>
+
+</body>
+</html>

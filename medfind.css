@@ -1,0 +1,183 @@
+.im{
+    height: 35px;
+    width: 35px;
+}
+.txt{
+    margin-left: 50px;
+    margin-top: -10 px;
+}
+.jnb{
+    text-align: center;
+}
+.imia{
+    margin-left: 90px;
+}
+.ma{
+    width: 100%;
+    height:500px;
+}
+.pdn{
+    margin-left: 0px;
+    width: 60px;
+}
+.log1{
+    padding-left: 750px;}
+
+.phar{
+    margin: auto;
+    padding: 30px;
+    font-size: 50px;
+    width: 50%;
+    background-color:rgb(61, 170, 70);
+}
+.ca{
+    text-align: center;
+}
+.hea{
+    text-align: center;
+    background-color: rgb(124, 214, 147);
+    border: none;
+    border-radius: 15px;
+    height: 80px;
+    padding-top: 20px;
+    }
+nav{
+    position: absolute;
+}
+.phar3{
+    padding-left: 90px;
+}
+
+.med{
+    color: rgb(1, 83, 22);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 20px;
+    padding-left:80px;
+    font-size: 50px;
+}
+.med1{
+    padding-left: 100px;
+    padding-top: 5px;
+}
+.med3{
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    padding-top: 150px;
+    padding-left: 100px;
+}
+.foot{
+    height: 150px;
+    padding-top: 5px;
+    background-color: rgb(219, 231, 219);
+}
+.many{
+    padding-left: 80px;
+}
+.ic{
+    height: 20px;
+    width: 20px;
+    color: green;
+    margin-right: 8px;
+}
+footer a{
+    color: black;
+    text-decoration: none;
+}
+.fo2{
+    padding-left: 400px;
+    margin-top: -75px;
+}
+.fo1{
+    margin-top: 20px;
+}
+.fo3{
+    padding-left: 800px;
+    margin-top: -75px;
+}
+.fo4{
+    padding-left: 1200px;
+    margin-top: -49px;
+}
+.pasi{
+    margin-left: 130px;
+    margin-top: -25px;
+}
+.add{
+    padding-left: 50px;
+    border-radius: 5px;
+    height: 42px;
+    width: 500px;
+    border: 3px;
+    border-color: aliceblue;
+
+}
+.add:hover{
+    border-bottom-color: green ;
+    border-left-color:green ;
+    border-right-color: green ;
+    border-top-color:green ;
+    
+}
+.add2{
+    margin-left: 400px;
+}
+.ph1{
+    padding-top: 70px;
+    margin-left: 30px;
+    margin-top: -50px;
+    padding-bottom: 10px ;
+    color:black;
+}
+.ph2{
+    margin-left:1100px ;
+    margin-top: -28px;
+    padding-bottom: 15px ;
+    color:black;
+}
+.inp{
+    width: 450px;
+    height: 35px;
+    border-radius: 5px;
+    border-color: green;
+}
+.rech{
+    margin-left: 400px;
+    margin-right: 400px;
+}
+.num{
+    width: 60px;
+    height: 40px;
+    color: blue;
+    border-color: blue;
+}
+.bt{
+    height: 40px;
+    background-color: rgb(1, 1, 255);
+}
+.co{
+    color: blue;
+}
+.prix{
+    color: blue;
+    font-size: 24px;
+}
+.marg{
+    padding-left: 80px;
+}
+.btt{
+    margin-left: 480px;
+}
+.hidden {
+    display: none;
+}
+.lie{
+    color: rgb(93, 93, 228);
+}
+.fo{
+    background-color: #d3f5d3;
+}
+.na{
+    background-color: #c5f0c5;
+}

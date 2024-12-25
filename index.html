@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmFind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="website icon" href="i1.png" type="png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+      .kanit-regular {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+        .hero-buttons a {
+  padding: 15px 25px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #0b3d91; /* Couleur de fond initiale */
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease; /* Transition fluide pour tous les changements */
+}
+
+/* Bouton secondaire - style normal */
+.hero-buttons a.secondary {
+  background-color: #eeeeee;
+  color: #0b3d91;
+  border: 1px solid #0b3d91;
+}
+
+/* Effet de survol (hover) */
+.hero-buttons a:hover {
+  background-color: #062f6d; /* Couleur de fond sur hover */
+  color: #ffffff; /* Couleur du texte sur hover */
+  transform: scale(1.1); /* Agrandissement du bouton lors du survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée sur hover */
+}
+
+/* Effet de bordure animée */
+.hero-buttons a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: #ffffff;
+  transition: all 0.5s ease;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.hero-buttons a:hover::before {
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+       body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap; /* Permet l'adaptation en colonnes pour les petits écrans */
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: #ffffff;
+}
+.title {
+  font-family: 'Lato', Arial, sans-serif; /* Police moderne sans-serif */
+  font-size: 24px; /* Taille ajustable selon vos besoins */
+  font-weight: 600; /* Semi-gras pour une apparence nette */
+  color: #002060; /* Bleu foncé professionnel */
+  line-height: 1.5; /* Espacement confortable entre les lignes */
+  text-align: left; /* Alignement à gauche */
+  background-color: #f8f9ff; /* Arrière-plan légèrement bleu clair */
+  padding: 10px; /* Espacement autour du texte */
+  border-radius: 5px; /* Coins arrondis pour un effet moderne */
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 30px;
+  animation: enterImage 1s forwards;
+
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  color: #0b3d91;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #555555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Permet de gérer l'espacement sur les petits écrans */
+}
+
+.hero-buttons a {
+  padding: 15px 25px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #0b3d91;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-buttons a.secondary {
+  background-color: #eeeeee;
+  color: #0b3d91;
+  border: 1px solid #0b3d91;
+}
+
+.hero-buttons a:hover {
+  background-color: #062f6d;
+  transform: scale(1.05);
+}
+
+/* Animation continue de l'image : dézoom et mouvement */
+.hero-image {
+  flex: 1;
+  max-width: 415px;
+  padding: 20px;
+  position: relative;
+  animation: enterImage 1s forwards; /* Animation continue et l'animation d'entrée */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transition pour l'effet de dézoom */
+}
+
+.hero-image img {
+  max-width: 95%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Transition pour le dézoom */
+}
+
+/* Dézoomer l'image légèrement */
+.hero-image:hover img {
+  transform: scale(0.95); /* Dézoom de l'image au survol */
+}
+
+/* Animation pour faire bouger l'image */
+@keyframes moveImage {
+  0% {
+    transform: translateX(0) translateY(0) scale(1); /* Position initiale */
+  }
+  25% {
+    transform: translateX(15px) translateY(-15px) scale(0.98); /* Déplacement léger vers la droite et vers le haut */
+  }
+  50% {
+    transform: translateX(-15px) translateY(15px) scale(0.96); /* Déplacement léger vers la gauche et vers le bas */
+  }
+  75% {
+    transform: translateX(15px) translateY(0) scale(0.98); /* Retour à droite */
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1); /* Retour à la position d'origine */
+  }
+}
+
+/* Animation d'entrée pour faire descendre l'image légèrement et la déplacer en haut à gauche */
+@keyframes enterImage {
+  0% {
+    transform: translateX(-600px) translateY(-600px) scale(0.9); /* Départ haut à gauche */
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1); /* Retour à la position d'origine */
+  }
+}
+
+.card-title{
+    text-align: center;
+    color: #002060;
+}
+/* Styles Responsives */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-buttons a {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  .hero-image {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-buttons a {
+    font-size: 12px;
+    padding: 10px 18px;
+  }
+}
+.section-title {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .section-title h2 {
+      font-size: 24px;
+      color: #002060;
+      margin-bottom: 5px;
+    }
+    .section-title span {
+      display: inline-block;
+      padding: 5px 15px;
+      background-color: #e6ebff;
+      color: #002060;
+      font-size: 14px;
+      border-radius: 20px;
+    }
+    .logo-carousel {
+      width: 80%;
+      margin: 20px auto;
+    }
+    .logo-carousel img {
+      max-width: 100px;
+      max-height: 50px;
+      display: block;
+      margin: auto;
+    }/* Animation de la carte */
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px; /* Ajout d'un cadre arrondi */
+  overflow: hidden; /* Pour maintenir les bordures des images */
+}
+
+.animated-card:hover {
+  transform: translateY(-10px); /* Légère élévation */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+}
+
+/* Animation sur l'image */
+.animated-card img {
+  transition: transform 0.3s ease;
+}
+
+.animated-card:hover img {
+  transform: scale(1.05); /* Zoom léger sur l'image */
+}
+
+/* Style des liens */
+.animated-card .card-text a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.animated-card .card-text a:hover {
+  color: #0056b3;
+}
+/* Animation de la carte */
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px; /* Bordures arrondies */
+  overflow: hidden; /* Contenir les images */
+  animation: float 3s ease-in-out infinite; /* Animation continue */
+}
+
+/* Animation pour le mouvement vertical */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Monte légèrement */
+  }
+}
+
+/* Animation sur l'image */
+.animated-card img {
+  transition: transform 0.3s ease;
+}
+
+.animated-card:hover img {
+  transform: scale(1.05); /* Zoom léger au survol */
+}
+
+/* Style des liens */
+.animated-card .card-text a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.animated-card .card-text a:hover {
+  color: #0056b3;
+}
+/* Animation de la carte */
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px; /* Bordures arrondies */
+  overflow: hidden; /* Contenir les images */
+  animation: float 3s ease-in-out infinite; /* Animation continue */
+}
+.cart{
+  border-color: #002060;
+}
+/* Animation pour le mouvement vertical */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Monte légèrement */
+  }
+}
+
+/* Animation sur l'image */
+.animated-card img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.animated-card:hover img {
+  transform: scale(1.05); /* Zoom léger */
+  filter: hue-rotate(0deg) saturate(2); /* Changement de couleur en bleu */
+}
+
+/* Style des liens */
+.animated-card .card-text a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.animated-card .card-text a:hover {
+  color: #0056b3;
+}
+
+.service-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Animation de titre */
+        .service-title {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .service-title:hover {
+            color: #007bff;
+        }
+
+        /* Couleur de fond et style des images */
+        .service-img {
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+        height: 200px; /* Hauteur fixe pour éviter que l'image devienne trop grande */
+        object-fit: cover; /* Permet de garder les proportions de l'image */
+        transition: transform 0.3s ease;
+    }
+
+    .service-img:hover {
+        transform: scale(1.1);
+    }
+
+        /* Espacement et couleurs du texte */
+        .service-description {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        /* Couleur de fond et animation pour le survol */
+        .service-card-body {
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card-body:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Effet d'apparition des cartes */
+        .service-card {
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        /* Définition de l'animation fadeIn */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .cp{
+          text-align: center;
+          color: #002060;
+        }
+        .cl{
+          color: #224894;
+          text-align: center;
+        }
+        /* Centrer le contenu de la section */
+.container.py-5.ck {
+    display: flex;
+    justify-content: center;  /* Centrer horizontalement */
+    align-items: center;      /* Centrer verticalement */
+    flex-direction: column;   /* Organiser les éléments verticalement */
+    padding: 30px 15px;
+}
+
+/* Gestion des colonnes sur les écrans */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacement entre les cartes */
+    flex-wrap: wrap;
+}
+
+/* Configuration des cartes */
+.service-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;  /* Prend toute la largeur disponible */
+}
+
+/* Effet au survol de la carte */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Images dans les cartes */
+.service-img {
+    width: 100%;
+    height: 260px;  /* Hauteur fixe */
+    object-fit: cover;  /* Conserver les proportions de l'image */
+    border-radius: 15px 15px 0 0;
+}
+
+/* Texte dans la carte */
+.service-card-body {
+    padding: 20px;
+}
+
+/* Titres dans les cartes */
+.service-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Description dans les cartes */
+.service-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Responsivité des cartes */
+@media (max-width: 768px) {
+    .col-12.col-sm-6.col-lg-3 {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .col-12.col-sm-6.col-lg-3 {
+        flex: 1 1 22%;  /* Chaque carte occupe environ 22% de la largeur sur grand écran */
+    }
+}
+.info-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .text-content h2 {
+            color: #3751ff;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .text-content h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #2d2d2d;
+        }
+
+        .text-content p {
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        .text-content .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #3751ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .text-content .btn:hover {
+            background: #2d42cc;
+        }
+
+        .image-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bounce 3s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .image-content img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+      </style>
+  </head>
+<body style="background-color: #ffffff;">
+    
+  <section>
+    <nav class="navbar navbar-expand-lg fixed-top" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="i1.png" alt="Logo PharmFind" class="me-2" style="width: 40px; height: 40px;">
+          <h3 class="mb-0 kanit-regular" style=" font-size: 30px; color: #002060;">PharmFind</h3>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#block1" style="color: #75b1da; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+                <h5 class="mb-0 kanit-regular" style="font-size: 17px; color: #002060;">Accueil</h5>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#block2" style="color: #75b1da; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+                <h5 class="mb-0 kanit-regular" style="font-size: 17px; color: #002060;">Pharmacie</h5>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#block3" style="color: #75b1da; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+                <h5 class="mb-0 kanit-regular" style="font-size: 17px; color: #002060;">Service</h5>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#con" style="color: #75b1da; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+                <h5 class="mb-0 kanit-regular" style="font-size: 17px; color: #002060;">contact</h5>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="checktype.html" style="color: #75b1da; font-weight: bold; text-transform: uppercase; padding: 8px 15px; border-radius: 5px;">
+                <h5 class="mb-0 kanit-regular" style="font-size: 17px; color: #002060;">Connexion</h5>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <div class="hero mt-5" id="block1">
+    <div class="hero-content kanit-regular">
+      <h2 style="color: #002060;">Bienvenue sur PharmFind, votre solution d'achat de médicaments en ligne !</h2>
+      <p>Trouvez les médicaments dont vous avez besoin en toute simplicité, avec des options de livraison rapides et un service fiable.</p>
+      <div class="hero-buttons">
+        <a href="checktype.html">Se Connecter</a>
+      </div>
+    </div>
+    <div class="hero-image pl-5">
+      <img src="ind1.webp" alt="Illustration PharFind">
+    </div>
+  </div>
+  <div class="section-title mt-5 kanit-regular" id="block2">
+    <span>PharmFind</span>
+    <h2 class="mt-4">Pharmacie Active</h2>
+  </div>
+  <section class="pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                <div class="card animated-card">
+                    <img src="mm33.png" class="card-img-top" alt="Pharmacie Gabes">
+                    <div class="card-body">
+                      <h5 class="card-title kanit-regular ">Pharmacie Gabes</h5>
+                      <p class="card-text card-title kanit-regular">
+                        <a href="https://www.google.com/search?q=pharmacie+gabes" style="color: #afbeff;">Adresse : V3PR+6PG, Gabès</a>
+                      </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                <div class="card animated-card">
+                    <img src="mm33.png" class="card-img-top" alt="Pharmacie Sfax">
+                    <div class="card-body">
+                      <h5 class="card-title kanit-regular">Pharmacie Sfax</h5>
+                      <p class="card-text card-title kanit-regular">
+                        <a href="https://www.google.com/search?q=pharmacie+sfax" style="color: #afbeff;">Adresse : Moulinville, Rte de Tunis, Sfax 3069</a>
+                      </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                <div class="card animated-card">
+                    <img src="mm33.png" class="card-img-top" alt="Pharmacie Tunis">
+                    <div class="card-body">
+                      <h5 class="card-title kanit-regular">Pharmacie Tunis</h5>
+                      <p class="card-text card-title kanit-regular">
+                        <a href="https://www.google.com/search?q=pharmacie+tunis" style="color: #afbeff;">Adresse : R4GQ+2QC, Av. El Faouz, Tunis</a>
+                      </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+              <div class="card animated-card">
+                  <img src="mm33.png" class="card-img-top" alt="Pharmacie Nabeul">
+                  <div class="card-body">
+                    <h5 class="card-title kanit-regular ">Pharmacie Nabeul</h5>
+                    <p class="card-text card-title kanit-regular">
+                      <a href="https://www.google.com/search?q=pharmacie+nabeul" style="color: #afbeff;">Adresse : FP2J+V8P, Nabeul</a>
+                    </p>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</section>
+<div class="section-title mt-5 kanit-regular" id="block3">
+    <span>PharmFind</span>
+    <h2 class="mt-4">Mon Service</h2>
+  </div>
+
+  <div class="container py-5 ck kanit-regular">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="service-card">
+                <img src="pi33.png" class="service-img" alt="Pharmacie Gabes">
+                <div class="service-card-body">
+                    <h5 class="service-title pt-3 cl kanit-regular">Pharmacie</h5>
+                    <p class="service-description pt-3 cp">
+                      Notre service de pharmacie est à votre disposition pour répondre à vos besoins en matière de santé. Vous pouvez télécharger et consulter vos prescriptions à tout moment dans notre boutique en ligne, en bénéficiant d’une large gamme de médicaments et de produits pharmaceutiques. De plus, vous avez la possibilité de cumuler des avantages et des récompenses en utilisant nos services. Nous sommes là pour vous offrir une expérience rapide, pratique et fiable, adaptée à votre bien-être.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="service-card">
+                <img src="picc2.png" class="service-img" alt="Pharmacie Sfax">
+                <div class="service-card-body">
+                    <h5 class="service-title pt-3 cl kanit-regular">Livraison</h5>
+                    <p class="service-description pt-3 cp">
+                      Notre service de livraison offre une gestion facile et flexible de vos commandes. Vous pouvez visualiser toutes vos commandes en un clin d'œil, avec la possibilité de les accepter ou de les rejeter selon vos disponibilités. Pour encore plus d’efficacité, vous pouvez ajouter des collaborateurs à votre équipe pour gérer les livraisons ensemble. Nous mettons tout en œuvre pour vous offrir une expérience fluide, rapide et personnalisée, adaptée à vos besoins.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="service-card">
+                <img src="picc1.png" class="service-img" alt="Pharmacie Tunis">
+                <div class="service-card-body">
+                    <h5 class="service-title pt-3 cl kanit-regular">Visiter</h5>
+                    <p class="service-description pt-3 cp">
+                      Grâce à notre service de visite, vous pouvez explorer facilement tous les médicaments disponibles dans chaque pharmacie partenaire. Sélectionnez les produits dont vous avez besoin et profitez d'une expérience d'achat fluide. Vous avez également la liberté de choisir la société de livraison qui correspond le mieux à vos attentes pour vous faire livrer vos médicaments rapidement et en toute sécurité. Simplifiez vos achats tout en bénéficiant d’une flexibilité maximale.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="info-section kanit-regular" id="block4">
+  <div class="text-content">
+      <h2 >QUI SOMMES-NOUS ?</h2>
+      <h1 style="color: #224894">PharmFind a pour objectif de faciliter le processus d'achat de médicaments   </h1>
+      <p> <strong>Pharmfind</strong> facilite l'achat de médicaments en ligne et leur livraison directement à votre domicile, vous offrant un service rapide, sécurisé et pratique. Avec Pharmfind, prenez soin de votre santé sans quitter le confort de votre maison...</p>
+      <a href="checktype.html" class="btn">En savoir plus →</a>
+  </div>
+  <div class="image-content">
+      <img src="rar3.png" alt="Illustration">
+  </div>
+</div>
+
+<footer class="footer py-5 mt-5 kanit-regular"  id="con" style="background-color: #ffffff; border-top: 1px solid #ddd;">
+  <div class="container">
+      <div class="row justify-content-center text-dark">
+          <!-- Contact Information -->
+          <div class="col-md-3 text-center mb-4 mb-md-0">
+              <div class="footer-item mb-3">
+                  <i class="fas fa-phone-alt me-2" style="font-size: 24px; color: #343a40;"></i>
+                  <a href="tel:+21627704669" class="footer-link" style="color: #343a40; font-size: 16px; text-decoration: none;">+216 27704669</a>
+              </div>
+              <div class="footer-item">
+                  <i class="fas fa-envelope me-2" style="font-size: 24px; color: #343a40;"></i>
+                  <a href="mailto:ilyesrejeb12@gmail.com" class="footer-link" style="color: #343a40; font-size: 16px; text-decoration: none;">ilyesrejeb12@gmail.com</a>
+              </div>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="col-md-3 text-center mb-4 mb-md-0">
+              <div class="footer-item mb-3">
+                  <i class="fab fa-linkedin me-2" style="font-size: 24px; color: #0a66c2;"></i>
+                  <a href="https://www.linkedin.com/in/rejeb-ilyes-4942a0319/" class="footer-link" style="color: #0a66c2; font-size: 16px; text-decoration: none;">LinkedIn</a>
+              </div>
+              <div class="footer-item">
+                  <i class="fab fa-facebook-f me-2" style="font-size: 24px; color: #1877f2;"></i>
+                  <a href="https://www.facebook.com/ilyes.rejeb.96" class="footer-link" style="color: #1877f2; font-size: 16px; text-decoration: none;">Facebook</a>
+              </div>
+          </div>
+
+          <!-- Additional Links -->
+          <div class="col-md-3 text-center">
+              <div class="footer-item mb-3">
+                  <i class="fab fa-github me-2" style="font-size: 24px; color: #333;"></i>
+                  <a href="https://github.com/ILyes0700" class="footer-link" style="color: #333; font-size: 16px; text-decoration: none;">GitHub</a>
+              </div>
+              <div class="footer-item">
+                  <i class="fab fa-instagram me-2" style="font-size: 24px; color: #e4405f;"></i>
+                  <a href="https://www.instagram.com/ilyes_rejeb_07/" class="footer-link" style="color: #e4405f; font-size: 16px; text-decoration: none;">Instagram</a>
+              </div>
+          </div>
+      </div>
+
+      <!-- Footer Text -->
+      <div class="text-center  mt-5">
+          <p class="footer-text mt-5" style="color: #6c757d; font-size: 14px;">
+              PharmFind &copy; 2024 | Designed by <strong style="color: #343a40;">Ilyes</strong>
+          </p>
+      </div>
+  </div>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/676aa036af5bfec1dbe110f7/1ifs83mu9';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+</footer>
+
+
+<!--Start of Tawk.to Script-->
+    <!--End of Tawk.to Script-->
+</body>
+</html>

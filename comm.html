@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhramFind</title>
+  <link rel="website icon" href="i1.png" type="png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f9;
+    }
+    #chatbox {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .message {
+      margin: 10px 0;
+    }
+    .user {
+      text-align: right;
+      color: blue;
+    }
+    .bot {
+      text-align: left;
+      color: green;
+    }
+    input[type="text"] {
+      width: calc(100% - 60px);
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      background-color: #5cb85c;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #4cae4c;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbox">
+    <a href="log11.html"><img src="icons8-flèche-gauche-50.png" alt=""></a>
+    <div id="chatlog"></div>
+    <div>
+      <input type="text" id="userInput" placeholder="Décrivez vos symptômes..." />
+      <button onclick="sendMessage()">Envoyer</button>
+    </div>
+  </div>
+
+  <script>
+    // Base de données enrichie
+    const database = [
+      {
+        maladie: "Anémie",
+        symptomes: ["fatigue", "vertiges", "faiblesse", "essoufflement"],
+        medicaments: ["Suppléments de fer", "Acide folique", "Vitamine B12"]
+      },
+      {
+        maladie: "Hypotension",
+        symptomes: ["vertiges", "maux de tête", "fatigue", "vision floue"],
+        medicaments: ["Hydratation", "Aliments salés", "Fludrocortisone"]
+      },
+      {
+        maladie: "Migraine",
+        symptomes: ["maux de tête sévères", "vertiges", "nausées", "sensibilité à la lumière"],
+        medicaments: ["Ibuprofène", "Sumatriptan", "Paracétamol"]
+      },
+      {
+        maladie: "Grippe",
+        symptomes: ["fièvre", "maux de tête", "courbatures", "fatigue"],
+        medicaments: ["Paracétamol", "Ibuprofène"]
+      },
+      {
+        maladie: "COVID-19",
+        symptomes: ["fièvre", "toux", "perte de goût", "fatigue"],
+        medicaments: ["Paracétamol", "Repos", "Consultation médicale"]
+      },
+      {
+        maladie: "Asthme",
+        symptomes: ["essoufflement", "sifflements", "oppression thoracique"],
+        medicaments: ["Salbutamol", "Corticostéroïdes inhalés"]
+      },
+      {
+        maladie: "Infection urinaire",
+        symptomes: ["brûlures en urinant", "envie fréquente d'uriner", "douleur abdominale"],
+        medicaments: ["Nitrofurantoïne", "Fosfomycine"]
+      }
+    ];
+
+    // Fonction pour analyser les symptômes
+    function analyserEtat(saisie) {
+      const symptomesUtilisateur = saisie.toLowerCase().split(" ");
+      let resultat = "Aucune maladie correspondante trouvée. Consultez un médecin.";
+
+      database.forEach(entry => {
+        const symptomesCorrespondants = entry.symptomes.filter(symptome =>
+          symptomesUtilisateur.some(userSymptome => userSymptome.includes(symptome))
+        );
+
+        if (symptomesCorrespondants.length > 0) {
+          resultat = `Il semble que vous pourriez avoir ${entry.maladie}. 
+                      Symptômes correspondants : ${symptomesCorrespondants.join(", ")}.
+                      Médicaments recommandés : ${entry.medicaments.join(", ")}.`;
+        }
+      });
+
+      return resultat;
+    }
+
+    // Fonction pour envoyer un message
+    function sendMessage() {
+      const userInput = document.getElementById("userInput").value.trim();
+      if (userInput === "") return;
+
+      // Ajouter le message utilisateur au chatlog
+      const chatlog = document.getElementById("chatlog");
+      const userMessage = document.createElement("div");
+      userMessage.className = "message user";
+      userMessage.textContent = userInput;
+      chatlog.appendChild(userMessage);
+
+      // Ajouter la réponse du bot
+      const botResponse = document.createElement("div");
+      botResponse.className = "message bot";
+      botResponse.textContent = analyserEtat(userInput);
+      chatlog.appendChild(botResponse);
+
+      // Nettoyer le champ texte
+      document.getElementById("userInput").value = "";
+
+      // Scroll vers le bas du chatlog
+      chatlog.scrollTop = chatlog.scrollHeight;
+    }
+  </script>
+</body>
+</html>
